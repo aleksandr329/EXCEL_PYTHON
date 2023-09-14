@@ -83,10 +83,14 @@ def scan3(name):  #<- Функция для скана по имени фирм�
             summa = sheet[f'F{i}'].value
             ostatok = sheet[f'G{i}'].value
             chislo = sheet[f'H{i}'].value
-            print(f'''ID {i_d}, Номер счета: {number},
+            info = f'''ID {i_d}, Номер счета: {number},
             ИНН: {inn}, Организация: {organizace},
             Общая сумма: {summa}, Остаток: {ostatok},
-            Оплатить до: {chislo}''')
+            Оплатить до: {chislo} \n'''
+            print(info)
+            with open(f'Отчет по названию фирмы {time_now}.txt', 'a') as file_txt:
+                file_txt.write(info)
+            continue
 
         else:
             name_tabl = sheet[f'D{i}'].value.lower()
@@ -100,13 +104,15 @@ def scan3(name):  #<- Функция для скана по имени фирм�
                     summa = sheet[f'F{i}'].value
                     ostatok = sheet[f'G{i}'].value
                     chislo = sheet[f'H{i}'].value
-                    print(f'''ID {i_d}, Номер счета: {number},
+                    info = f'''ID {i_d}, Номер счета: {number},
                     ИНН: {inn}, Организация: {organizace},
                     Общая сумма: {summa}, Остаток: {ostatok},
-                    Оплатить до: {chislo}''')
-            except IndexError:
-                print('Вы ввели недостаточно символов чтобы определить название фирмы')
-            try:
+                    Оплатить до: {chislo} \n'''
+                    print(info)
+                    with open(f'Отчет по названию фирмы {time_now}.txt', 'a') as file_txt:
+                        file_txt.write(info)
+                    continue
+            
                 if name_tabl[0] in name_user[0] and name_tabl[1] in name_user[1] and name_tabl[2] in name_user[2] and name_tabl[3] in name_user[3]:
                     i_d = sheet[f'A{i}'].value
                     number = sheet[f'C{i}'].value
@@ -115,12 +121,18 @@ def scan3(name):  #<- Функция для скана по имени фирм�
                     summa = sheet[f'F{i}'].value
                     ostatok = sheet[f'G{i}'].value
                     chislo = sheet[f'H{i}'].value
-                    print(f'''ID {i_d}, Номер счета: {number},
+                    info = f'''ID {i_d}, Номер счета: {number},
                     ИНН: {inn}, Организация: {organizace},
                     Общая сумма: {summa}, Остаток: {ostatok},
-                    Оплатить до: {chislo}''')
+                    Оплатить до: {chislo} \n'''
+                    print(info)
+                    with open(f'Отчет по названию фирмы {time_now}.txt', 'a') as file_txt:
+                        file_txt.write(info)
+                    continue
+
             except IndexError:
                 print('Вы ввели недостаточно символов чтобы определить название фирмы')
+                break
 
         
 def scan4(inn):  #<- Функция для скана по инн фирмы
@@ -142,10 +154,13 @@ def scan4(inn):  #<- Функция для скана по инн фирмы
             ostatok = sheet[f'G{i}'].value
             chislo = sheet[f'H{i}'].value
             status = sheet[f'I{i}'].value
-            print(f'''ID {i_d}, Номер счета: {number},
+            info = f'''ID {i_d}, Номер счета: {number},
             ИНН: {inn}, Организация: {organizace},
             Общая сумма: {summa}, Остаток: {ostatok},
-            Оплатить до: {chislo}, Статус: {status}''')
+            Оплатить до: {chislo}, Статус: {status} \n'''
+            print(info)
+            with open(f'Отчет по ИНН фирмы {time_now}.txt', 'a') as file_txt:
+                file_txt.write(info)
 
 def scan5(number):  #<- Функция для скана по номеру счета
     file = 'Таблица учета Оплат.xlsx'
